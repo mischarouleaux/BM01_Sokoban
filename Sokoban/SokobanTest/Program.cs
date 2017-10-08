@@ -25,6 +25,9 @@ namespace SokobanSolver
 		private string destBoard, currBoard;
 		private int playerX, playerY, nCols;
 
+        /// <summary>
+        /// Main program with different levels to play.
+        /// </summary>
 		public static void Main(string[] a)
 		{
 			string level2 = "#######," +
@@ -79,6 +82,10 @@ namespace SokobanSolver
 			System.Console.Write(sol.Count());
 		}
 
+        /// <summary>
+        /// The function will find a solution when possible.
+        /// </summary>
+        /// <returns>The solution</returns>
 		private string Solve()
 		{
 			char[,] dirLabels = { { 'u', 'U' }, { 'r', 'R' }, { 'd', 'D' }, { 'l', 'L' } };
@@ -139,6 +146,10 @@ namespace SokobanSolver
 			return "No solution";
 		}
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:SokobanSolver.SokobanSolver"/> class.
+        /// </summary>
+        /// <param name="board">Board.</param>
 		SokobanSolver(string[] board)
 		{
 			nCols = board[0].Length;
@@ -166,6 +177,15 @@ namespace SokobanSolver
 			currBoard = currBuf.ToString();
 		}
 
+        /// <summary>
+        /// Move the specified x, y, dx, dy and trialBoard.
+        /// </summary>
+        /// <returns>The move.</returns>
+        /// <param name="x">The x coordinate.</param>
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="dx">Dx.</param>
+        /// <param name="dy">Dy.</param>
+        /// <param name="trialBoard">Trial board.</param>
 		private string Move(int x, int y, int dx, int dy, string trialBoard)
 		{
 
@@ -181,6 +201,15 @@ namespace SokobanSolver
 			return new string(trial);
 		}
 
+        /// <summary>
+        /// Push the specified x, y towards dx, dy on the trialBoard.
+        /// </summary>
+        /// <returns>The push.</returns>
+        /// <param name="x">The x coordinate.</param>
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="dx">Dx.</param>
+        /// <param name="dy">Dy.</param>
+        /// <param name="trialBoard">Trial board.</param>
 		private string Push(int x, int y, int dx, int dy, string trialBoard)
 		{
 
@@ -197,6 +226,11 @@ namespace SokobanSolver
 			return new string(trial);
 		}
 
+        /// <summary>
+        /// Checks if the current board is solved.
+        /// </summary>
+        /// <returns><c>true</c>, if solved was ised, <c>false</c> otherwise.</returns>
+        /// <param name="trialBoard">Trial board.</param>
 		private bool IsSolved(string trialBoard)
 		{
 			for (int i = 0; i < trialBoard.Length; i++)
